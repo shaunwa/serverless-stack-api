@@ -16,6 +16,7 @@ custom:
   # Set the table name here so we can use it while testing locally
   # Creates a separate table for dev and prod envs
   tableName: ${self:custom.stage}-notes
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
 
 provider:
   name: aws
@@ -26,6 +27,7 @@ provider:
   # Make tableName available on process.env
   environment:
     tableName: ${self:custom.tableName}
+    stripeSecretKey: ${self:custom.environment.stripeSecretKey}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.

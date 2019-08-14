@@ -5,5 +5,6 @@ export function calculateCost(storage) {
             ? 2
             : 1;
 
+    // Stripe wants the price in pennies
     return rate * storage * 100;
 }
