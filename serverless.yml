@@ -74,6 +74,15 @@ functions:
           cors: true
           authorizer: aws_iam
 
+  getVideos:
+    handler: get-videos.main
+    events:
+      - http:
+          path: videos
+          method: get
+          cors: true
+          authorizer: aws_iam
+
   list:
     # Defines an HTTP API endpoint that calls the main function in list.js
     # - path: url path is /notes

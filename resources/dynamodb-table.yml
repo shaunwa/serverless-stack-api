@@ -17,3 +17,17 @@ Resources:
           KeyType: RANGE
       # Set the capacity to auto-scale
       BillingMode: PAY_PER_REQUEST
+  VideosTable:
+    Type: AWS::DynamoDB::Table
+    # Don't delete old tables if there's a typo in the name or something
+    DeletionPolicy: Retain
+    Properties:
+      TableName: ${self:custom.tableName}-videos
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      # Set the capacity to auto-scale
+      BillingMode: PAY_PER_REQUEST
